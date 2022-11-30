@@ -10,7 +10,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class GamePanel extends JPanel implements Runnable{
-  private final int originalTileSize = 16; // 32x32
+  public final int originalTileSize = 16; // 32x32
   private final int scale = 5;
 
   public final int tileSize = originalTileSize * scale; // scale up to 48x48
@@ -29,12 +29,14 @@ public class GamePanel extends JPanel implements Runnable{
   TileManager tileM = new TileManager(this);
   KeyHandler keyH = new KeyHandler();
   Thread gameThread; //game clock, also it immedietly calls run method
+  // public Collision checker = new Collision(this);
   public Player player = new Player(this,keyH);
+
 
   
   public GamePanel(){
     this.setPreferredSize(new Dimension(screenWidth, screenHeight)); //set screen width and height
-    this.setBackground(Color.blue);
+    this.setBackground(Color.black);
     this.setDoubleBuffered(true); //renders stuff off screen (faster)
     this.addKeyListener(keyH);
     this.setFocusable(true);

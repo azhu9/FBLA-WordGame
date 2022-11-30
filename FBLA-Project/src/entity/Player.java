@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.io.IOException;
 // import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
 
 import javax.imageio.ImageIO;
 
@@ -23,6 +24,8 @@ public class Player extends Entity{
 
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
+        
+        solidArea = new Rectangle(8, 16, 32, 32);
 
         setDefaultValues();
         getPlayerImage();
@@ -57,20 +60,35 @@ public class Player extends Entity{
       if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed){
             if(keyH.downPressed == true){
               direction = "down";
-              worldY += speed;
             }
             if(keyH.upPressed == true){
               direction = "up";
-              worldY -= speed;
             }
             if(keyH.rightPressed == true){
               direction = "right";
-              worldX += speed;
             }
             if(keyH.leftPressed == true){
               direction = "left";
-              worldX -= speed;
             }
+
+            collisionOn = false;
+            // gp.checker.checkTile(this);
+
+            if(collisionOn == false){
+              if(keyH.upPressed == true){
+                worldY -= speed;
+              }
+              if(keyH.downPressed == true){
+                worldY += speed;
+              }
+              if(keyH.leftPressed == true){
+                worldX -= speed;
+              }
+              if(keyH.rightPressed == true){
+                worldX += speed;
+              }
+            }
+            
           spriteCounter++;
           if(spriteCounter > 10){
             if(spriteNum == 1){
