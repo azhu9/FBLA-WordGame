@@ -29,10 +29,13 @@ public class GamePanel extends JPanel implements Runnable{
   TileManager tileM = new TileManager(this);
   KeyHandler keyH = new KeyHandler();
   Thread gameThread; //game clock, also it immedietly calls run method
-  // public Collision checker = new Collision(this);
+  public Collision checker = new Collision(this);
   public Player player = new Player(this,keyH);
 
-
+  //game state
+  public int gameState;
+  public final int playState = 1;
+  public final int pauseState = 2;
   
   public GamePanel(){
     this.setPreferredSize(new Dimension(screenWidth, screenHeight)); //set screen width and height

@@ -25,7 +25,7 @@ public class Player extends Entity{
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
         
-        solidArea = new Rectangle(8, 16, 32, 32);
+        solidArea = new Rectangle(26, 23, 30, 45);
 
         setDefaultValues();
         getPlayerImage();
@@ -39,6 +39,8 @@ public class Player extends Entity{
     }
     public void getPlayerImage(){
       try{
+        idle = ImageIO.read(getClass().getResourceAsStream("../../res/player/idle1.png"));
+
         up1 = ImageIO.read(getClass().getResourceAsStream("../../res/player/rfup1.png"));
         up2 = ImageIO.read(getClass().getResourceAsStream("../../res/player/rfup2.png"));
 
@@ -57,34 +59,37 @@ public class Player extends Entity{
     }
 
     public void update(){
-      if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed){
+      if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
             if(keyH.downPressed == true){
               direction = "down";
             }
-            if(keyH.upPressed == true){
+            else if(keyH.upPressed == true){
               direction = "up";
             }
-            if(keyH.rightPressed == true){
+            else if(keyH.rightPressed == true){
               direction = "right";
             }
-            if(keyH.leftPressed == true){
+            else if(keyH.leftPressed == true){
               direction = "left";
             }
-
+          }
+      else{
+        direction = "idle";
+      }
             collisionOn = false;
-            // gp.checker.checkTile(this);
+            gp.checker.checkTile(this);
 
             if(collisionOn == false){
               if(keyH.upPressed == true){
                 worldY -= speed;
               }
-              if(keyH.downPressed == true){
+              else if(keyH.downPressed == true){
                 worldY += speed;
               }
-              if(keyH.leftPressed == true){
+              else if(keyH.leftPressed == true){
                 worldX -= speed;
               }
-              if(keyH.rightPressed == true){
+              else if(keyH.rightPressed == true){
                 worldX += speed;
               }
             }
@@ -99,7 +104,7 @@ public class Player extends Entity{
             }
             spriteCounter = 0;
           }
-      }
+      
     }
 
     public void draw(Graphics2D g2){
@@ -140,6 +145,12 @@ public class Player extends Entity{
           if(spriteNum == 2){
             image = right2;
           }
+            break;
+          case "idle":
+            image = idle;
+            break;
+          default:
+            image = idle;
             break;
         }
 

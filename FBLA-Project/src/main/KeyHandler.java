@@ -14,13 +14,13 @@ public class KeyHandler implements KeyListener{
     if(code == KeyEvent.VK_W || code == KeyEvent.VK_UP){
       upPressed = true;
     }
-    if(code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN){
+    else if(code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN){
       downPressed = true;
     }
-    if(code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT){
+    else if(code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT){
       leftPressed = true;
     }
-    if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
+    else if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
       rightPressed = true;
     }
   }
@@ -30,13 +30,13 @@ public class KeyHandler implements KeyListener{
     if(code == KeyEvent.VK_W || code == KeyEvent.VK_UP){
       upPressed = false;
     }
-    if(code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN){
+    else if(code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN){
       downPressed = false;
     }
-    if(code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT){
+    else if(code == KeyEvent.VK_A || code == KeyEvent.VK_LEFT){
       leftPressed = false;
     }
-    if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
+    else if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
       rightPressed = false;
     }
   }
