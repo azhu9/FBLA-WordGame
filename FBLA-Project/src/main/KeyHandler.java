@@ -3,7 +3,14 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
+
+  GamePanel gp;
   public boolean upPressed, downPressed, leftPressed, rightPressed;
+
+  public KeyHandler(GamePanel gp){
+    this.gp = gp;
+  }
+
   @Override
   public void keyTyped(KeyEvent e){ //NEED FOR KEY INPUT
     
@@ -23,6 +30,14 @@ public class KeyHandler implements KeyListener{
     else if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
       rightPressed = true;
     }
+    else if(code == KeyEvent.VK_ESCAPE || code == KeyEvent.VK_P){
+      if(gp.gameState == gp.playState){
+          gp.gameState = gp.pauseState;
+      }
+      else if(gp.gameState == gp.pauseState){
+          gp.gameState = gp.playState;
+      }
+    }
   }
   @Override
   public void keyReleased(KeyEvent e){ //WASD released
@@ -39,7 +54,5 @@ public class KeyHandler implements KeyListener{
     else if(code == KeyEvent.VK_D || code == KeyEvent.VK_RIGHT){
       rightPressed = false;
     }
-  }
-
-  
+  }  
 }
