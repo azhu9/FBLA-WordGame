@@ -38,6 +38,14 @@ public class KeyHandler implements KeyListener{
           gp.gameState = gp.playState;
       }
     }
+    else if(code == KeyEvent.VK_B){
+      if(gp.gameState == gp.playState){
+        gp.gameState = gp.endState;
+      }
+      else if(gp.gameState == gp.endState){
+        gp.gameState = gp.playState;
+      }
+    }
   }
   @Override
   public void keyReleased(KeyEvent e){ //WASD released

@@ -34,6 +34,9 @@ public class UI {
         if(gp.gameState == gp.pauseState){
             drawPauseScreen();
         }
+        if(gp.gameState == gp.endState){
+            drawEndScreen();
+        }
     }
     
     public void drawPauseScreen(){
@@ -47,6 +50,17 @@ public class UI {
 
         g2.drawString(text1, x1, y);
         g2.drawString(text2, x2, y+70);
+    }
+
+    public void drawEndScreen(){
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 60F));
+        g2.setColor(Color.yellow);
+        String text1 = "Congratulations You Won!";
+        
+        int x = getXforCenteredText(text1);
+        int y = gp.screenHeight/2;
+
+        g2.drawString(text1, x, y);
     }
 
     public int getXforCenteredText(String text){
